@@ -10,9 +10,16 @@ public class CalculateMonthlyExpenses {
     public static void main(String[] args) {
         String newspapers = "";
         double price = 0;
-        String monthYear = "03/2020"; // MM/yyyy
 
-        DecimalFormat df = new DecimalFormat(".00");
+        /**
+         * Enter month and year in below format
+         * MM/yyyy
+         *
+         * Example : For march'2020
+         * 03/2020
+         */
+        String monthYear = "03/2020";
+
         /**
          * Add newspaper names in the array
          */
@@ -44,7 +51,7 @@ public class CalculateMonthlyExpenses {
              */
             newspapers = newspaperNames[i] + ", " + newspapers;
         }
-
+        DecimalFormat df = new DecimalFormat(".00");
         System.out.println("You are subscribing " + newspapers + " newspapers and monthly charges : " + df.format(price) + "/- for " + calendar.getMonthName() + " month");
     }
 }
