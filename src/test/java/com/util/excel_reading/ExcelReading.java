@@ -1,7 +1,11 @@
 package com.util.excel_reading;
 
-import org.apache.poi.ss.usermodel.*;
-import org.openxmlformats.schemas.drawingml.x2006.main.STAdjCoordinate;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,17 +20,18 @@ public class ExcelReading {
     Cell cell = null;
 
     Map<String, String> myMap = new HashMap<>();
-    public Map<String, String > getExcelData(String newspaperName){
+
+    public Map<String, String> getExcelData(String newspaperName) {
         try {
             workbook = WorkbookFactory.create(new File(path));
             sheet = workbook.getSheet("Newspapers");
             int lastRowNum = sheet.getLastRowNum();
-            for (int i = 0; i <= lastRowNum; i++){
+            for (int i = 0; i <= lastRowNum; i++) {
                 row = sheet.getRow(i);
                 int lastCellNo = row.getLastCellNum();
                 cell = row.getCell(0);
-                if (cell.getStringCellValue().equalsIgnoreCase(newspaperName)){
-                    for (int j = 1; j < lastCellNo; j++){
+                if (cell.getStringCellValue().equalsIgnoreCase(newspaperName)) {
+                    for (int j = 1; j < lastCellNo; j++) {
                         row = sheet.getRow(0);
                         String key = row.getCell(j).getStringCellValue();
 
@@ -42,7 +47,7 @@ public class ExcelReading {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 workbook.close();
             } catch (IOException e) {
@@ -56,5 +61,4 @@ public class ExcelReading {
         ExcelReading excelReading = new ExcelReading();
         return excelReading.getExcelData(newspaper);
     }
-
 }
