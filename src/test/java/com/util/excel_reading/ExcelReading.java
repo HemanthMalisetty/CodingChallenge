@@ -1,6 +1,7 @@
 package com.util.excel_reading;
 
 import org.apache.poi.ss.usermodel.*;
+import org.openxmlformats.schemas.drawingml.x2006.main.STAdjCoordinate;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,13 +42,19 @@ public class ExcelReading {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                workbook.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return myMap;
     }
 
-    public static void main(String[] args) {
+    public static Map<String, String> getNewspaperChargers(String newspaper) {
         ExcelReading excelReading = new ExcelReading();
-        System.out.println(excelReading.getExcelData("HT"));
+        return excelReading.getExcelData(newspaper);
     }
 
 }

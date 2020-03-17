@@ -11,7 +11,7 @@ public class MyCalendar {
             Calendar cal = Calendar.getInstance();
             String currentMonthAndYear = new SimpleDateFormat("MMMM/yyyy").format(cal.getTime());
             String oldDate = date + "/" + currentMonthAndYear;
-            day = new SimpleDateFormat("EEEE").format(new SimpleDateFormat("dd/MMMM/yyyy").parse(oldDate)) + " Date : " + date;
+            day = new SimpleDateFormat("EEEE").format(new SimpleDateFormat("dd/MMMM/yyyy").parse(oldDate));
         } catch (ParseException e) {
             e.printStackTrace();
         }
