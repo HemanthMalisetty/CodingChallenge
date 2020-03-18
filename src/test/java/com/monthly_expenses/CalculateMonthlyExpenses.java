@@ -49,7 +49,7 @@ public class CalculateMonthlyExpenses {
             /**
              * Adding newspaper names for printing
              */
-            newspapers = newspaperNames[i] + ", " + newspapers;
+            newspapers = newspaperNames[i].toUpperCase() + ", " + newspapers;
         }
         DecimalFormat df = new DecimalFormat(".00");
         System.out.println("You are subscribing " + newspapers + " newspapers and monthly charges : " + df.format(price) + "/- for " + calendar.getMonthName() + " month");
